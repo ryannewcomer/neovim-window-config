@@ -4,7 +4,15 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	keys = {
 		{ "<leader>f", "<cmd>Telescope find_files<cr>", desc = "find file" },
-		{ "<leader>c", "<cmd>Telescope colorscheme<cr>", desc = "colorscheme" },
+		{ "<leader>r", "<cmd>Telescope oldfiles<cr>", desc = "recent file" },
+		{
+			"<C-r>",
+			function()
+				local buildin = require("telescope.builtin")
+				buildin.diagnostics()
+			end,
+			desc = "lsp diagnostics",
+		},
 		{
 			"<leader>d",
 			function()
