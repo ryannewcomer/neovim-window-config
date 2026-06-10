@@ -1,3 +1,14 @@
+if vim.fn.has("unix") == 1 then
+	if vim.fn.executable("/bin/bash") == 1 then
+		vim.opt.shell = "/bin/bash"
+	else
+		vim.opt.shell = "/bin/sh"
+	end
+end
+
+if vim.o.shell:match("fish$") then
+	vim.opt.shell = "/bin/bash"
+end
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
